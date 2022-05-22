@@ -1,0 +1,213 @@
+/* ================================ Utilities =============================== */
+.u-shadow--light {
+  box-shadow: 0px 0px 15px 5px hsla(0 0% 0% / .25);
+}
+/* ================================ Utilities =============================== */
+
+.AnySlide,
+.AnySlide * {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.AnySlide {
+  --boundryWidth: 1080px;
+  --overlapWidth: 50px;
+  --noOfItemsVisible: 2;
+  --itemMargin: 50px;
+  --itemPadding: 50px;
+  --controlsPadding: var(--itemMargin);
+
+  width: calc(var(--boundryWidth) + var(--overlapWidth));
+  max-width: calc(var(--boundryWidth) + var(--overlapWidth));
+
+  display: grid;
+  grid-row-gap: 50px;
+  grid-template-areas: 'AnySlide__boundry' 'AnySlide__controls';
+}
+
+.AnySlide[data-align="left"] {
+  margin: 0 auto 0 0;
+}
+
+.AnySlide[data-align="center"] {
+  margin: 0 auto;
+}
+
+.AnySlide[data-align="right"] {
+  margin: 0 0 0 auto;
+}
+
+.AnySlide__boundry {
+  overflow: hidden;
+  grid-area: AnySlide__boundry;
+}
+
+.AnySlide__slider {
+  display: flex;
+  flex-flow: row nowrap;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-snap-type: x mandatory;
+  padding-bottom: 50px;
+  margin-bottom: -50px;
+}
+
+.AnySlide__item {
+  min-width: calc(
+    calc(
+        calc(var(--boundryWidth) / var(--noOfItemsVisible)) -
+          var(--overlapWidth)
+      ) - (2 * var(--itemMargin))
+  );
+  background-color: #666;
+  background-size: cover;
+  background-position: center;
+  padding: var(--itemPadding);
+  margin: var(--itemMargin);
+  scroll-snap-align: start;
+  scroll-margin: 50px;
+}
+
+.AnySlide__kicker {
+  display: flex;
+  align-items: center;
+  font-size: 1rem;
+  line-height: 1rem;
+  margin-bottom: 15px;
+}
+
+.AnySlide__kickerIcon {
+  height: 1.75rem;
+  margin-right: 15px;
+}
+
+.AnySlide__header {
+  font-size: 1.75rem;
+  line-height: 1.75rem;
+  margin-bottom: 15px;
+}
+
+.AnySlide__paragraph {
+  font-size: 1.25rem;
+  line-height: 1.25rem;
+  margin-bottom: 15px;
+}
+
+.AnySlide__link {
+  font-size: 1.25rem;
+  line-height: 1.25rem;
+}
+
+.AnySlide[data-bordered="true"] .AnySlide__item {
+  margin-left: 0;
+  margin-right: 0;
+  border-left: 2px solid black;
+  border-right: 2px solid black;
+  scroll-snap-align: center;
+}
+
+.AnySlide[data-bordered="true"] .AnySlide__item:first-of-type {
+  border-left: none;
+}
+
+.AnySlide[data-bordered="true"] .AnySlide__item:last-of-type {
+  border-right: none;
+}
+
+.AnySlide__invertColors > * {
+  filter: invert(1);
+  text-shadow: 0px 0px 6px white;
+}
+
+.AnySlide__controls {
+  grid-area: AnySlide__controls;
+  display: grid;
+  grid-template-areas: 'AnySlide__controlPrev AnySlide__controlNext';
+  grid-column-gap: 50px;
+  padding: 0 var(--controlsPadding);
+}
+
+.AnySlide[data-align-controls="left"] .AnySlide__controls {
+  justify-self: start;
+}
+
+.AnySlide[data-align-controls="center"] .AnySlide__controls {
+  justify-self: center;
+}
+
+.AnySlide[data-align-controls="right"] .AnySlide__controls {
+  justify-self: end;
+}
+
+.AnySlide__controlPrev,
+.AnySlide__controlNext {
+  background-color: transparent;
+  opacity: .8;
+  border: unset;
+  cursor: pointer;
+  transition: all ease-in-out 300ms, background-color 0ms;
+}
+
+.AnySlide__controlDisabled {
+  cursor: default;
+  filter: grayscale(1);
+}
+
+.AnySlide__controlPrev:hover,
+.AnySlide__controlNext:hover {
+  opacity: 1;
+}
+
+@media (max-width: 1080px) {
+  #AnySlide__typeA {
+    --boundryWidth: 100vw;
+    --overlapWidth: 0px;
+    --noOfItemsVisible: 2;
+    --itemMargin: 50px;
+    --itemPadding: 50px;
+  }
+}
+
+@media (max-width: 980px) {
+  #AnySlide__typeA {
+    --boundryWidth: 100vw;
+    --overlapWidth: 0px;
+    --noOfItemsVisible: 1;
+    --itemMargin: 50px;
+    --itemPadding: 50px;
+  }
+}
+
+@media (max-width: 600px) {
+  #AnySlide__opinions {
+    --boundryWidth: 100vw;
+    --overlapWidth: 0px;
+    --noOfItemsVisible: 1;
+    --itemMargin: 50px;
+    --itemPadding: 50px;
+  }
+}
+
+
+/* Not related to AnySlide functionality */
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+
+footer {
+  display: flex;
+  flex-direction: column;
+}
+
+footer span {
+  display: inline-block;
+  flex-basis: 100%;
+  font-size: 1rem;
+}

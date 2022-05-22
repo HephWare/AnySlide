@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="AnySlide - pure JS slider configurable for any content">
+  <meta name="keywords" content="HTML,CSS,JavaScript,Slider">
+  <meta name="author" content="HephWare">
+  <title>AnySlide</title>
+  <link rel="stylesheet" href="AnySlide.css">
+</head>
+
+<body>
+  <div data-align="center" data-align-controls="center" data-bordered="false" id="AnySlide__typeA"></div>
+
+  <footer>
+    <span><a target="_blank" href="https://icons8.com/icon/WaLcz21TJxXW/arrow">Arrow</a> icons by <a target="_blank" href="https://icons8.com">Icons8</a></span>
+    <span><a target="_blank" href="https://icons8.com/icon/12776/calendar">Calendar</a> icon by <a target="_blank" href="https://icons8.com">Icons8</a></span>
+  </footer>
+  <script src="AnySlide.js"></script>
+  <script>
+    window.dummyData = [
+      {
+        type: 'TYPE_A',
+        html: false,
+        header: 'Hello World! - 1',
+        paragraph: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Cupiditate dolorem hic maiores? Itaque, saepe provident praesentium ex commodi eaque nostrum?',
+        link: { text: '#1', href: '#1-href' },
+        background: 'https://placeimg.com/640/480/any',
+      },
+      {
+        type: 'TYPE_B',
+        html: true,
+        kicker: { text: '20.05.20', icon: '/calendar.png' },
+        header: '<i>Hello</i> World! - 2',
+        paragraph: '<b>Lorem ipsum dolor</b>   sit, amet consectetur adipisicing elit. Cupiditate dolorem hic maiores? Itaque, saepe provident praesentium ex commodi eaque nostrum?',
+        link: { text: '#2', href: '#2-href' }
+      },
+      {
+        type: 'TYPE_A',
+        html: false,
+        header: 'Hello World! - 3',
+        paragraph: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Cupiditate dolorem hic maiores? Itaque, saepe provident praesentium ex commodi eaque nostrum?',
+        link: { text: '#3', href: '#3-href' }
+      },
+      {
+        type: 'TYPE_A',
+        html: false,
+        header: 'Hello World! - 4',
+        paragraph: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Cupiditate dolorem hic maiores? Itaque, saepe provident praesentium ex commodi eaque nostrum?',
+        link: { text: '#4', href: '#4-href' }
+      }
+    ];
+
+    const typeASlider = new AnySlide('AnySlide__typeA', dummyData).init();
+  </script>
+</body>
+
+</html>
